@@ -35,7 +35,7 @@ public class Mage extends BaseHero {
         if (this.mana >= 40) {
             this.mana -= 40;
             System.out.println(String.format("%s: Burn!", this.name));
-            target.GetDamage(50);
+            target.GetDamage(this.outputDmgCalc(50));
         }
         else {
             System.out.println(String.format("%s: Out of mana..", this.name));

@@ -1,17 +1,27 @@
+import java.lang.Math;
+
 public abstract class entity {
 
     public static Integer count = 0;
+    private Integer level;
     public Integer maxHp;
     public Integer hp;
     public String name;
     public Boolean alive;
 
     public entity(int hp, String name) {
+        this.level = 1;
         this.maxHp = hp;
         this.hp = hp;
         this.name = name;
         this.alive = true;
         count++;
+    }
+
+
+    public entity(int hp, String name, int level) {
+        this(hp, name);
+        this.level = level;
     }
 
 
@@ -21,8 +31,22 @@ public abstract class entity {
         this.DeathMessage();
     }
 
+
+    private static int inputDmgCalc(int rawDmg, int level) {
+        double factor = 1 / Math.sqrt(level);
+        return (int)Math.round(factor*rawDmg);
+    }
+
+    public int outputDmgCalc(int rawDmg) {
+        double factor = Math.exp(0.1*this.level);
+        return (int)Math.round(factor*rawDmg);
+    }
+
     
     public void GetDamage(int amount) {
+
+        amount = inputDmgCalc(amount, this.level);
+
         if (this.hp <= amount) {
             this.Death();
         }
@@ -41,6 +65,14 @@ public abstract class entity {
             this.hp += amount;
         }
         this.GetHealingMessage();
+    }
+
+    public int GetLevel() {
+        return this.level;
+    }
+
+    public void SetLevel(int level) {
+        this.level = level;
     }
 
 

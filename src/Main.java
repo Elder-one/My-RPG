@@ -1,14 +1,17 @@
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Random;
+
 public class Main {
     public static void main(String[] args) {
-        Mage nicci = new Mage("Darkness", "Nicci", 100, 800);
-        Mage zed = new Mage("Castle", "Zed", 80, 500);
+        Mage nicci = new Mage("Darkness", "Nicci", 500, 1000);
+        Mage zed = new Mage("Wisdom", "Zed", 500, 1000);
 
+        nicci.SetLevel(90);
+        nicci.FireBlast(nicci);
 
-        nicci.FireBlast(zed);
-        nicci.FireBlast(zed);
-        System.out.println(zed);
         System.out.println(nicci);
-        nicci.FireBlast(zed);
-        System.out.println(entity.count);
+        System.out.println(zed);
     }
 }
