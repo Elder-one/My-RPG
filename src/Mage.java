@@ -2,7 +2,14 @@ public class Mage extends BaseHero {
     Integer mana;
     Integer maxMana;
 
-    public Mage(String team, String name, int hp, int mana) {
+    public Mage(String name, int hp, int mana) {
+        super(hp, name);
+        this.mana = mana;
+        this.maxMana = mana;
+        System.out.println(String.format("Mage %s has arrived", name));
+    }
+
+    public Mage(String name, int hp, int mana, Team team) {
         super(hp, name, team);
         this.mana = mana;
         this.maxMana = mana;
@@ -12,7 +19,8 @@ public class Mage extends BaseHero {
     @Override
     public String toString() {
         // TODO Auto-generated method stub
-        return String.format("name: %s; hp: %d; mana: %d;",this.name, this.hp, this.mana);
+        return String.format("team: %s; name: %s; hp: %d; mana: %d;",
+                            this.team.name, this.name, this.hp, this.mana);
 
     }
 
